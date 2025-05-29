@@ -12,15 +12,19 @@ namespace LibraryApi.Api.Controllers
     public class BooksController : ControllerBase
     {
         private readonly IBookService _bookService;
-        public BooksController(IBookService bookService)
+        private readonly ILogger<BooksController> _logger;
+        public BooksController(IBookService bookService, ILogger<BooksController> logger)
         {
             _bookService = bookService;
+            _logger = logger;
         }
 
         [HttpGet]
         public async Task<ActionResult<List<BookDto>>> GetAll()
         {
+            _logger.LogInformation("Get all books");
             var books = await _bookService.GetAllAsync();
+            _logger.LogInformation($"Return {books.Count} books");
             return Ok(books);
         }
     }

@@ -1,5 +1,6 @@
 using LibraryApi.Application.Dtos;
 using LibraryApi.Domain.Repositories;
+using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,12 +12,15 @@ namespace LibraryApi.Application.Services
     public class BookService : IBookService
     {
         private readonly IBookRepository _bookRepository;
-        public BookService(IBookRepository bookRepository)
+        private readonly ILogger<BookService> _logger;
+        public BookService(IBookRepository bookRepository, ILogger<BookService> logger)
         {
             _bookRepository = bookRepository;
+            _logger = logger;
         }
         public async Task<List<BookDto>> GetAllAsync()
         {
+            _logger.LogInformation("Get all books fromn repository");
             var books = await _bookRepository.GetAllAsync();
             return books.Select(b => new BookDto
             {
