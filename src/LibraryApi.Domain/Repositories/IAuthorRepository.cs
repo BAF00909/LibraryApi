@@ -7,12 +7,12 @@ using System.Threading.Tasks;
 
 namespace LibraryApi.Domain.Repositories
 {
-    public interface IBookRepository
+    public interface IAuthorRepository
     {
-        Task<List<Book>> GetAllAsync();
-        Task<Book?> GetByIdAsyn(int id);
-        Task AddAsync(Book author);
-        Task UpdateAsync(Book author);
+        Task<List<Author>> GetAllAsync();
+        Task<Author?> GetByIdAsync(int id);
+        Task AddAsync(Author author);
+        Task UpdateAsync(Author author);
         Task DeleteAsync(int id);
     }
 }

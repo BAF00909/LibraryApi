@@ -10,5 +10,9 @@ namespace LibraryApi.Application.Services
     public interface IBookService
     {
         public Task<List<BookDto>> GetAllAsync();
+        public Task<BookDto?> GetByIdAsync(int id);
+        public Task<BookDto> CreateAsync(CreateBookDto createBookDto);
+        public Task<BookDto?> UpdateAsync(int id, UpdateBookDto bookDto);
+        public Task<bool> DeleteAsync(int id);
     }
 }
