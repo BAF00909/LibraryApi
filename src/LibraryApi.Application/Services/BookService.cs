@@ -70,7 +70,8 @@ namespace LibraryApi.Application.Services
                 Title = createBookDto.Title,
                 Authors = selectedAuthors,
                 Genre=createBookDto.Genre,
-               PublicationYear=createBookDto.PublicationYear
+                Pages = createBookDto.Pages,
+                PublicationYear=createBookDto.PublicationYear
             };
             await _bookRepository.AddAsync(newBook);
             var bookDto = new BookDto

@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace LibraryApi.Application.Services
 {
-    interface IAuthorService
+    public interface IAuthorService
     {
         Task<List<AuthorDto>> GetAllAsync();
         Task<AuthorDto?> GetByIdAsync(int id);

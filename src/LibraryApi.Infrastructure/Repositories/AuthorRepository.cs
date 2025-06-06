@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace LibraryApi.Infrastructure.Repositories
 {
-    class AuthorRepository : IAuthorRepository
+    public class AuthorRepository : IAuthorRepository
     {
         private readonly LibraryContext _context;
         public AuthorRepository(LibraryContext context)
@@ -34,7 +34,7 @@ namespace LibraryApi.Infrastructure.Repositories
 
         public async Task<List<Author>> GetAllAsync()
         {
-            return await _context.Authors.AsNoTracking().Include(a => a.Books).ToListAsync();
+            return await _context.Authors.Include(a => a.Books).ToListAsync();
         }
 
         public async Task<Author?> GetByIdAsync(int id)

@@ -1,6 +1,7 @@
 using LibraryApi.Application.Services;
 using LibraryApi.Domain.Repositories;
 using LibraryApi.Infrastructure;
+using LibraryApi.Infrastructure.Repositories;
 using Microsoft.EntityFrameworkCore;
 using Serilog;
 using System.Threading.Tasks;
@@ -31,6 +32,8 @@ namespace LibraryApi.Api
             });
             builder.Services.AddScoped<IBookRepository, BookRepository>();
             builder.Services.AddScoped<IBookService, BookService>();
+            builder.Services.AddScoped<IAuthorRepository, AuthorRepository>();
+            builder.Services.AddScoped<IAuthorService, AuthorService>();
 
             var app = builder.Build();
 
